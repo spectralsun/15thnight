@@ -7,6 +7,10 @@ app = Flask('15thnight')
 def index():
     return 'web app'
 
+@app.route('/health')
+def health():
+    return ''
+
 
 if __name__ == '__main__':
     app.run()
