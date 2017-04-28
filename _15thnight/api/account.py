@@ -12,6 +12,7 @@ from _15thnight.forms import (
     ForgotPasswordForm, csrf_protect
 )
 from _15thnight.models import Service, User
+from _15thnight.resources import CurrentUserResource
 from _15thnight.util import api_error, jsonify, required_access
 
 
@@ -20,10 +21,7 @@ account_api = Blueprint('account_api', __name__)
 
 @account_api.route('/current_user', methods=['GET'])
 def get_current_user():
-    user = None
-    if current_user.is_authenticated:
-        user = current_user
-    return jsonify(current_user=user)
+    return jsonify(CurrentUserResource(current_user))
 
 
 @account_api.route('/login', methods=['POST'])
@@ -138,7 +136,7 @@ def help_message():
     """
     Send a help message on behalf of the provider.
     """
-    if 'message' not in request.json:
-        return api_error('Message not specified.')
+    if not request.json or 'message' not in request.json:
+        return api_error(dict(message=['Message not specified.']))
     send_help_message(current_user, request.json['message'])
     return '', 200

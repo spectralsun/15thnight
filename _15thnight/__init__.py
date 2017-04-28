@@ -12,6 +12,7 @@ from _15thnight.api import (
 from _15thnight.email import mailer
 from _15thnight.forms import csrf_protect
 from _15thnight.models import User
+from _15thnight.resources import CurrentUserResource
 from _15thnight.util import ExtensibleJSONEncoder
 
 
@@ -76,9 +77,7 @@ def after_request(response):
 @app.route('/<path:path>')
 def index(path=None):
     """Serve the index"""
-    state = json.dumps(dict(
-        current_user=current_user if current_user.is_authenticated else None
-    ))
+    state = json.dumps(dict(current_user=CurrentUserResource(current_user)))
     return render_template('index.html', state=state)
 
 

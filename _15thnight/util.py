@@ -34,8 +34,8 @@ def jsonify(*args, **kwargs):
     )
 
 
-def api_error(message='Bad Request', code=400):
-    return jsonify(error=message, _status_code=code)
+def api_error(error, code=400):
+    return jsonify(error, _status_code=code)
 
 
 def required_access(*roles):
