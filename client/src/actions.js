@@ -1,4 +1,4 @@
-import { createAction } from 'util';
+import { createAction } from 'react-requests';
 
 export const requestStarted = createAction('REQUEST_STARTED');
 export const requestFinished = createAction('REQUEST_FINISHED');
