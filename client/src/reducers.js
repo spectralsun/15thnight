@@ -4,22 +4,9 @@ import { reducer as notifications } from 'react-notification-system-redux';
 import Immutable from 'seamless-immutable';
 
 import {
-    loadedCurrentUser,
-    loadedUsers,
-    loadedUser,
     togglePageContainer,
     clearPageScroll,
-    loadedCategories,
-    loadedCategory,
-    loadedServices,
-    loadedService,
-    loadedAlerts,
-    loadedAlert,
-    setAlertRedirect,
-    loadedNeed,
-    requestStarted,
-    requestFinished,
-    requestError
+    setAlertRedirect
 } from 'actions';
 import {
     loginUser,
