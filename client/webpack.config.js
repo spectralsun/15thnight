@@ -1,6 +1,8 @@
 const config = {
     entry: [
-        './src/AppEntry.js'
+        'babel-polyfill',
+        './node_modules/bootstrap3/dist/css/bootstrap.min.css',
+        './src/entry.js'
     ],
     output: {
         path: __dirname + '/../_15thnight/static',
